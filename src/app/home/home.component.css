@@ -1,3 +1,20 @@
 img {
     height: 500px;
   }
+
+  .stylebinding1{
+    color: crimson;
+    background-color: antiquewhite;
+  }
+
+  .red{
+    color: red;
+  }
+
+  .green{
+    color: green;
+  }
+
+  .yellow{
+    color: rgb(0, 38, 255);
+  }

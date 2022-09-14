@@ -9,52 +9,82 @@
     <title>Document</title>
 </head>
 <body>
+  <h1 style="margin-left: 450px ;" > <strong> Welcome to Amazon</strong></h1>
+  <h2 style="margin-left: 490px ;">Shop all the products</h2>
     <!--TWO WAY BINDING-->
           <!--[(ngModel)]-->
           <!--FormsModule in the app.module.ts-->
           <!-- <input type="text" [(ngModel)]="name"><span>Welcome {{name}}</span> -->
 
 <!--IMAGE CAROUSEL-->
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="https://3.bp.blogspot.com/-0KmwLussiFQ/Urglf2WVqWI/AAAAAAAAAXY/9G4MNAST2tw/s1600/laptops.jpeg" class="d-block w-100" alt="CSS">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>DELL</h5>
-          <p>LAPTOPS</p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="https://i.pinimg.com/originals/d2/3d/e1/d23de1ec140496144f4aa2b4a90c3030.jpg" class="d-block w-100" alt="JS">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>KIDS</h5>
-          <p>TOYS</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="https://fthmb.tqn.com/--g_FXSTs_FEdjuG27FYKhR2-r4=/2000x1500/filters:fill(auto,1)/appliancesalexeydudoladovGettyImages-171589331-57b37c3c5f9b58b5c2cb819c.jpg" class="d-block w-100" alt="JQ">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>HOME APPLIANCES</h5>
-          <p>WASHING MACHINE,REFRIGERATOR,DISH WASHER</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
   </div>
-  <br>
-  <br>
+  
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.firstpost.com/wp-content/uploads/2020/05/Dell-Inspiron-15-3.jpg" alt="DELL" class="d-block" style="width:100%">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.wallpaperscraft.com/image/single/camera_hand_technology_166868_2560x1440.jpg" alt="Chicago" class="d-block" style="width:100%">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1610465299993-e6675c9f9efa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwd2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="New York" class="d-block" style="width:100%">
+    </div>
+  </div>
+  
+  <!-- Left and right controls/icons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<div class="container-fluid mt-3">
+  <h3>Choose Products</h3>
+</div>
+  <!--*ngfor to retrive the contents from products-->
+  <!--*ngif in the <ul> for toggle effect - hide/show the contents-->
+  <ul *ngIf="isVisible">
+    <li *ngFor="let product of Products" style="color: blue;">
+      {{product.productname}}
+    </li>
+  </ul>
+<!--Event-->
+  <button (click)="hide_products()">Hide The Product Details</button>
+<!--*ngSwitch-->
+<!--Property binding-->
+<ul [ngSwitch]="product">
+  <li *ngSwitchCase="'Dress'">Dress</li>
+  <li *ngSwitchCase="'Footwear'">Footwear</li>
+  <li *ngSwitchCase="'Headphones'">Headphones</li>
+  <li *ngSwitchCase="'Laptop'">Laptop</li>
+  <li *ngSwitchDefault>Not Found</li>
+</ul>
+<hr>
+
+<!--Style binding-->
+<p [style.color]="'red'">Red Color</p>
+<p [style.backgraound-color]="'blue'">Hi</p>
+<p class="stylebinding1">Class Binding</p>
+<hr>
+<button [style.color]="errorcolor == 'red' ? 'red' : 'blue'">Style Binding using Ternary</button>
+<hr>
+<!--Access the product Details *ngFor and *ngSwitch-->
+<ul *ngFor="let pdetails of ProductDetails" [ngSwitch]="pdetails.status">
+  <li *ngSwitchCase="'Active'" class="green"> {{pdetails.pid}} - {{pdetails.pname}} - {{pdetails.status}} </li>
+  <li *ngSwitchCase="'InActive'" class="red"> {{pdetails.pid}} - {{pdetails.pname}} - {{pdetails.status}} </li>
+  <li *ngSwitchDefault class="yellow"> {{pdetails.pid}} - {{pdetails.pname}} - {{pdetails.status}} </li>
+</ul>
+<p [style.color]="getColor()">RED BRO</p>
 </body>
 </html>
